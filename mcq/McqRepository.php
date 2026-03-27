@@ -102,6 +102,7 @@ class McqRepository
 
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
         $data['articles'] = $this->getDataForSuite($data['articles_id']);
+        $data['url'] = $GLOBALS['MUSIC'][ rand(0, count($GLOBALS['MUSIC'])-1) ];
         return $data;
     }
 
@@ -135,8 +136,12 @@ class McqRepository
         $questions = "";//rand(int $min, int $max)
         $count = 0;
         for ($i=0 ; $i < 10 ; $i++ ) { 
-            $count++;
-            $questions .= ($questions=="" ? "" : ",") . $arrayData[ rand(0, count($arrayData)-1) ]['id'];
+            $selectedId = $arrayData[ rand(0, count($arrayData)-1) ]['id'];
+            if(!str_contains(",$questions,", ",$selectedId,")) {
+                $count++;
+                $questions .= ($questions=="" ? "" : ",") . $arrayData[ rand(0, count($arrayData)-1) ]['id'];
+            }
+            
         }
 
         return array($count, $questions);
@@ -146,7 +151,7 @@ class McqRepository
     {
         $sql = "
         SELECT *
-        FROM data_learning
+        FROM data_mcq
         WHERE id IN ($data_ids)
         ";
 

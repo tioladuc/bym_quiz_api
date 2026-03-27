@@ -12,7 +12,7 @@ class StatisticsService
     }
 
     public function allAccessData()
-    {
+    {        
         $totalSuites = $this->repo->allAccessData();
 
         return [
