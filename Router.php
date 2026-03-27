@@ -32,7 +32,8 @@ class Router {
             echo json_encode(['error'=>'Route not found']);
             return;
         }
-        $this->preparingAccount();
+		if(!(str_starts_with($uri, "/constants/")))
+			$this->preparingAccount();
 
         $action = $this->routes[$method][$uri];
 
@@ -47,7 +48,7 @@ class Router {
     private function preparingAccount() {
         $pdo = Database::connect();
         $body = json_decode(file_get_contents("php://input"), true);
-        $mode = $body['mode'];
+        $mode = $body['mode'] ;
         $langue = $body['language'];
         $sessionId = $body['session_id'];
         
