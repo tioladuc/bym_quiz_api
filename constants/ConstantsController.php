@@ -16,19 +16,22 @@ class ConstantsController
             "FR" => [
                 'EASY' => 'Facile',
                 'MEDIUM' => 'Moyen',
-                'HARD' => 'Difficile'
+                'HARD' => 'Difficile',
+				'all' => 'Tous/Toutes'
             ],
 
             "EN" => [
                 'EASY' => 'Easy',
                 'MEDIUM' => 'Medium',
-                'HARD' => 'Hard'
+                'HARD' => 'Hard',
+				'all' => 'All',
             ],
 
             "ES" => [
                 'EASY' => 'Fácil',
                 'MEDIUM' => 'Medio',
-                'HARD' => 'Difícil'
+                'HARD' => 'Difícil',
+				'all' => 'Todo'
             ]
         );
         $language = strtoupper( $body['language'] ?? 'EN' );
@@ -47,6 +50,7 @@ class ConstantsController
             "Ketuvim" => "Ketuvim (Writings)",
             "Evangile" => "Evangile",
             "Testament de Yehoshoua" => "Testament de Yehoshoua",
+			"all" => "All/Tout",
         );
         return [
             'success' => true,
@@ -122,7 +126,8 @@ class ConstantsController
             'J1' => '1 Yohanan (1 Jean) - 5',
             'J2' => '2 Yohanan (2 Jean) - 1',
             'J3' => '3 Yohanan (3 Jean) - 1',
-            'RV' => 'Apokalupsis (Apocalypse) - 22'
+            'RV' => 'Apokalupsis (Apocalypse) - 22',
+			'all' => 'All/Tout'
         ];
 
         return [
@@ -136,6 +141,7 @@ class ConstantsController
         $data = array(
             "PEB" => "Personnages de la bible",
             "DOC" => "Doctrine",
+			"all" => "All/Tout",
         );
         return [
             'success' => true,
